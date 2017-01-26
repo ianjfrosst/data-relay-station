@@ -189,12 +189,6 @@ def main(sim_file=None, sim_speed=0.2, serial_port=None, legacy_port=False, logg
     else:
         print ("Logging is disabled. Use --log to overwrite default.")
 
-<<<<<<< HEAD
-    filename = "flight_data {}.csv".format(datetime.datetime.now()).replace(':','_')
-    print ("writing to file called '{}'".format(filename))
-
-=======
->>>>>>> 05af3e4afca2d9272e3cdae4d7e690411d4e140a
     list_header = [i[1] for key, value in db_type.iteritems() for i in value if not i[0] == 'x']
     #Add additional fields here:
     list_header.append('RSSI')
