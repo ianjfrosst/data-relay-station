@@ -67,14 +67,14 @@ command_types = {
 
 multipart_command_types = {
     'new_waypoint':             {'cmd':128, 'type':'ddffB'}, # lon, lat, alt, rad, type
-    'insert_waypoint':          {'cmd':129, 'type':'ddffxxBB'}, # lon, lat, alt, rad, prev, next
+    'insert_waypoint':          {'cmd':129, 'type':'ddffxBB'}, # lon, lat, alt, rad, prev, next
     'set_returnHomeCoordinates':{'cmd':130, 'type':'ddf'}, # lon, lat, alt
     'tare_IMU':                 {'cmd':131, 'type':'fff'},
     'set_IMU':                  {'cmd':132, 'type':'fff'},
     'set_KDValues':             {'cmd':133, 'type':'fffffff'},
     'set_KPValues':             {'cmd':134, 'type':'fffffff'},
     'set_KIValues':             {'cmd':135, 'type':'fffffff'},
-    'update_waypoint':          {'cmd':136, 'type':'ddffBB'}, # lon, lat, alt, rad, type, id
+    'update_waypoint':          {'cmd':136, 'type':'ddffBxxB'}, # lon, lat, alt, rad, type, id
     'set_gains':                {'cmd':137, 'type':'hfff'} #first int represents the channel #, 3 floats are KD, KP, KI
 }
 

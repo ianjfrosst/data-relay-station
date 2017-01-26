@@ -15,7 +15,7 @@ LOW_FREQ = 2
 SERVICE_PORT = 1234
 
 db_type = {
-        HIGH_FREQ: ( #76 bytes
+        HIGH_FREQ: ( # 72 bytes + 16 padding bytes
             ('d', 'lat'),
             ('d', 'lon'),
             ('l', 'sys_time'),
@@ -52,7 +52,7 @@ db_type = {
             ('x', 'one byte of padding'),
             ('x', 'one byte of padding'),
             ),
-        MED_FREQ: ( #82 bytes
+        MED_FREQ: ( # 88 bytes
             ('f', 'roll_kd'),
             ('f', 'roll_kp'),
             ('f', 'pitch_kd'),
@@ -94,7 +94,7 @@ db_type = {
             ('B', 'waypoint_index'),
             ('B', 'path_following'),
             ),
-        LOW_FREQ: ( #74 bytes + 12 padding bytes
+        LOW_FREQ: ( # 75 bytes + 13 padding bytes
             ('f', 'roll_ki'),
             ('f', 'pitch_ki'),
             ('f', 'yaw_ki'),
@@ -186,7 +186,7 @@ def main(sim_file=None, sim_speed=0.2, serial_port=None, legacy_port=False):
 
     filename = "flight_data {}.csv".format(datetime.datetime.now()).replace(':','_')
     print ("writing to file called '{}'".format(filename))
-    
+
     list_header = [i[1] for key, value in db_type.iteritems() for i in value if not i[0] == 'x']
     #Add additional fields here:
     list_header.append('RSSI')
@@ -231,7 +231,7 @@ if __name__ == "__main__":
     parser.add_argument("--serialport", metavar="STRING", required=False, help="Preferred serial port if multiple devices are connected.")
     parser.add_argument("--legacy_port", "-l", action='store_true')
     args = parser.parse_args()
-    
+
     #Default Sim Speed
     simspeed = 0.2
     if (args.simspeed):
