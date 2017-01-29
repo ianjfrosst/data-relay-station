@@ -212,7 +212,7 @@ def main(sim_file=None, sim_speed=0.2, serial_port=None, legacy_port=False, logg
                         WriteToFileMiddleware(datalines, filename, header))
             else:
                 telem = TelemetryProducer(one2many,datalines)
-
+                
             host = reactor.listenTCP(SERVICE_PORT if legacy_port else 0, factory).getHost()
             print('listening on port {}'.format(host.port))
 
@@ -249,6 +249,6 @@ if __name__ == "__main__":
         logging=True
     elif(args.nolog):
         logging=False
-
+    
 
     main(sim_file=args.simfile, sim_speed=simspeed, serial_port=args.serialport, legacy_port=args.legacy_port, logging=logging)
