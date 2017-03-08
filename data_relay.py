@@ -35,22 +35,7 @@ db_type = {
             ('h', 'pitch_rate_setpoint'),
             ('h', 'pitch_setpoint'),
             ('h', 'throttle_setpoint'),
-            ('x', 'one byte of padding'),
-            ('x', 'one byte of padding'),
-            ('x', 'one byte of padding'),
-            ('x', 'one byte of padding'),
-            ('x', 'one byte of padding'),
-            ('x', 'one byte of padding'),
-            ('x', 'one byte of padding'),
-            ('x', 'one byte of padding'),
-            ('x', 'one byte of padding'),
-            ('x', 'one byte of padding'),
-            ('x', 'one byte of padding'),
-            ('x', 'one byte of padding'),
-            ('x', 'one byte of padding'),
-            ('x', 'one byte of padding'),
-            ('x', 'one byte of padding'),
-            ('x', 'one byte of padding'),
+            ('16x', '16 bytes of padding'),
             ),
         MED_FREQ: ( # 88 bytes
             ('f', 'roll_kd'),
@@ -94,7 +79,7 @@ db_type = {
             ('B', 'waypoint_index'),
             ('B', 'path_following'),
             ),
-        LOW_FREQ: ( # 75 bytes + 13 padding bytes
+        LOW_FREQ: ( # 74 bytes + 14 padding bytes
             ('f', 'roll_ki'),
             ('f', 'pitch_ki'),
             ('f', 'yaw_ki'),
@@ -115,20 +100,7 @@ db_type = {
             ('h', 'autonomousLevel'),
             ('h', 'startup_error_codes'),
             ('h', 'startupSettings'),
-            ('B', 'probe_status'),
-            ('x', 'one byte of padding'),
-            ('x', 'one byte of padding'),
-            ('x', 'one byte of padding'),
-            ('x', 'one byte of padding'),
-            ('x', 'one byte of padding'),
-            ('x', 'one byte of padding'),
-            ('x', 'one byte of padding'),
-            ('x', 'one byte of padding'),
-            ('x', 'one byte of padding'),
-            ('x', 'one byte of padding'),
-            ('x', 'one byte of padding'),
-            ('x', 'one byte of padding'),
-            ('x', 'one byte of padding'),
+            ('14x', '14 bytes of padding'),
             )
         }
 
@@ -212,7 +184,7 @@ def main(sim_file=None, sim_speed=0.2, serial_port=None, legacy_port=False, logg
                         WriteToFileMiddleware(datalines, filename, header))
             else:
                 telem = TelemetryProducer(one2many,datalines)
-                
+
             host = reactor.listenTCP(SERVICE_PORT if legacy_port else 0, factory).getHost()
             print('listening on port {}'.format(host.port))
 
@@ -249,6 +221,6 @@ if __name__ == "__main__":
         logging=True
     elif(args.nolog):
         logging=False
-    
+
 
     main(sim_file=args.simfile, sim_speed=simspeed, serial_port=args.serialport, legacy_port=args.legacy_port, logging=logging)
