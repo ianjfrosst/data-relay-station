@@ -161,7 +161,7 @@ def main(sim_file=None, sim_speed=0.2, serial_port=None, legacy_port=False, logg
     else:
         print ("Logging is disabled. Use --log to overwrite default.")
 
-    list_header = [i[1] for key, value in db_type.iteritems() for i in value if not i[0] == 'x']
+    list_header = [i[1] for key, value in db_type.iteritems() for i in value if not 'x' in i]
     #Add additional fields here:
     list_header.append('RSSI')
     header = ','.join(list_header)
