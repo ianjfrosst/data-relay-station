@@ -66,8 +66,8 @@ command_types = {
     'set_flapKDGain':           {'cmd':53,  'type':'f'},
     'set_flapKPGain':           {'cmd':54,  'type':'f'},
     'set_flapKIGain':           {'cmd':55,  'type':'f'},
-    'drop_probe':    	        {'cmd':56,  'type':'B'},
-    'reset_probe':		        {'cmd':57,  'type':'B'},
+    'UNUSED_1':    	        {'cmd':56,  'type':'B'},
+    'UNUSED_2':		        {'cmd':57,  'type':'B'},
     'follow_path':              {'cmd':58,  'type':'B'},
 }
 
