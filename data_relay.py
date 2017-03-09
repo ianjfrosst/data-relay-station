@@ -100,7 +100,8 @@ db_type = {
             ('h', 'autonomousLevel'),
             ('h', 'startup_error_codes'),
             ('h', 'startupSettings'),
-            ('14x', '14 bytes of padding'),
+            ('x', 'probe_status'), # required until groundstation is updated to remove probe drop
+            ('13x', '13 bytes of padding'),
             )
         }
 
